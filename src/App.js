@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import TennisPlayers from './components/TennisPlayers';
 
 class App extends Component {
   constructor() {
@@ -28,8 +29,25 @@ class App extends Component {
   }
   render() {
     return (
-      <div >
-        <h5>Tennis odds front end.</h5>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <TennisPlayers
+                    playerList={this.state.playerList}
+                  />
+
+                </td>
+                <td>
+                  <TennisPlayers
+                    playerList={this.state.playerList}
+                  />
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     );
   }
