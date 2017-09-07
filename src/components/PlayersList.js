@@ -4,8 +4,8 @@ import {Button, Pagination, Table} from 'react-bootstrap';
 import PlayerRow from './PlayerRow';
 
 class PlayerList extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {itemsPerPage: 10, currentPage: 1, cmLen0:0, cmLen1:1, cmSel: false, }
     this.setCurrentPage = this.setCurrentPage.bind(this);
     this.setItemsPerPage = this.setItemsPerPage.bind(this);

@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import {Table} from 'react-bootstrap';
 import _ from 'lodash';
 
-class PlayerStatistics extends React.Component {
-  render() {
+function PlayerStatistics (props) {
     let data;
-    if (_.isEmpty(this.props.playerStats)) {
+    if (_.isEmpty(props.playerStats)) {
       data = { name:"", matchesTotal:0, expectedWins:0, expectedWinsPercent:0, expectedLosses:0, expectedLossesPercent:0,
                         unExpectedWins:0, unExpectedWinsPercent:0, unExpectedLosses:0, unExpectedLossesPercent:0 }
     } else {
-      data = _.pick(this.props.playerStats, ['name', 'matchesTotal', 'expectedWins', 'expectedLosses',
+      data = _.pick(props.playerStats, ['name', 'matchesTotal', 'expectedWins', 'expectedLosses',
                                              'unExpectedWins',  'unExpectedLosses', ]);
       if (data.matchesTotal > 0) {
         data.expectedWinsPercent = (data.expectedWins/data.matchesTotal * 100).toFixed(2);
@@ -49,8 +48,6 @@ class PlayerStatistics extends React.Component {
         </tbody>
       </Table>
     );
-  }
-
 }
 
 PlayerStatistics.PropTypes = {
