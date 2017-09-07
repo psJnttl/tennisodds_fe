@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import {Table} from 'react-bootstrap';
 import TennisPlayers from './components/TennisPlayers';
 
 class App extends Component {
@@ -30,7 +31,7 @@ class App extends Component {
   render() {
     return (
         <div>
-          <table>
+          <Table>
             <tbody>
               <tr>
                 <td>
@@ -47,8 +48,8 @@ class App extends Component {
                 </td>
               </tr>
             </tbody>
-          </table>
-      </div>
+          </Table>
+        </div>
     );
   }
 }
