@@ -56,9 +56,9 @@ class PlayerList extends React.Component {
         <Table bordered condensed hover>
           <thead>
             <tr>
-              <th>nimi</th>
-              <th>kansallisuus</th>
-              <th>liitto</th>
+              <th>Name</th>
+              <th>Nationality</th>
+              <th>Association</th>
             </tr>
           </thead>
           <tbody>
