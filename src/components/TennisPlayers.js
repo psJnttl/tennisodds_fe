@@ -5,6 +5,7 @@ import PlayerStatistics from './PlayerStatistics';
 import axios from 'axios';
 import _ from 'lodash';
 import SelectDateRange from './SelectDateRange';
+import SearchPlayer from './SearchPlayer';
 
 class TennisPlayers extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class TennisPlayers extends React.Component {
     this.changeTo = this.changeTo.bind(this);
     this.dateSet = this.dateSet.bind(this);
     this.fetchPlayerStatisticsWithDates = this.fetchPlayerStatisticsWithDates.bind(this);
+    this.onSearchInputChange = this.onSearchInputChange.bind(this);
+    this.radioButtonSelect = this.radioButtonSelect.bind(this);
   }
   selectPlayer(item) {
     this.fetchPlayerStatistics(item.id);
@@ -64,6 +67,18 @@ class TennisPlayers extends React.Component {
     });
   }
 
+  onSearchInputChange(e) {
+    this.setState({searchInputValue: e.target.value});
+  }
+  radioButtonSelect(e) {
+    if (e.target.value === "auto") {
+      this.setState({showPlayerList: false, selectedPlayer:""});
+    }
+    else if (e.target.value === "full") {
+      this.setState({showPlayerList: true});
+    }
+  }
+
   filterBasedOnName() {
     return this.props.playerList.filter( item => {
       return item.name.toLowerCase().includes(this.state.searchInputValue.toLowerCase());
@@ -85,6 +100,14 @@ class TennisPlayers extends React.Component {
           onChangeTo={this.changeTo}
           dateTo={this.state.dateTo}
           dateSet={this.dateSet}
+        />
+        <SearchPlayer
+          name={this.state.searchInputValue}
+          onChangeName={this.onSearchInputChange}
+          onClick={this.radioButtonSelect}
+          valueR={this.state.showPlayerList}
+          playerList={this.props.playerList}
+          fetchPlayerStatistics={this.fetchPlayerStatistics}
         />
         <PlayerList
           show={this.state.showPlayerList}
