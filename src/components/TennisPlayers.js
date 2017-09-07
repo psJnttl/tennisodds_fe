@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerList from './PlayersList';
+import PlayerStatistics from './PlayerStatistics';
 
 class TennisPlayers extends React.Component {
   constructor(props) {
@@ -24,6 +25,9 @@ class TennisPlayers extends React.Component {
     }
     return (
       <div>
+        <PlayerStatistics
+          playerStats={ this.state.playerStats}
+        />
         <h5> TennisPlayer </h5>
         <PlayerList
           show={this.state.showPlayerList}
