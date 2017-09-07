@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import _ from 'lodash';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {playerList : []}
+  }
+  fetchPlayerListFromServer() {
+    const self = this;
+    axios.get('http://localhost:8081/players')
+    .then(function (response, updatePlayers) {
+      self.updatePlayers(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  updatePlayers(playerList) {
+    const players = _.sortBy(playerList, [function(p) { return _.toLower(p.name) }]);
+    this.setState({playerList: players});
+  }
+
+  componentWillMount() {
+    this.fetchPlayerListFromServer();
+  }
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div >
+        <h5>Tennis odds front end.</h5>
       </div>
     );
   }
