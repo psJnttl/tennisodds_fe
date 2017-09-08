@@ -11,7 +11,7 @@ class App extends Component {
   }
   fetchPlayerListFromServer() {
     const self = this;
-    axios.get('http://localhost:8081/players')
+    axios.get('http://localhost:8081/api/players')
     .then(function (response, updatePlayers) {
       self.updatePlayers(response.data);
     })

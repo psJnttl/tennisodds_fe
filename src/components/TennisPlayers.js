@@ -27,7 +27,7 @@ class TennisPlayers extends React.Component {
   fetchPlayerStatistics(playerId) {
     this.setState({selectedPlayer: playerId});
     const self = this;
-    axios.get('http://localhost:8081//statistics/player/' + playerId)
+    axios.get('http://localhost:8081/api/statistics/player/' + playerId)
     .then(function (response) {
       self.storePlayerStatsToState(response.data);
     })
@@ -58,7 +58,7 @@ class TennisPlayers extends React.Component {
   fetchPlayerStatisticsWithDates(playerObj) {
     this.setState({selectedPlayer: playerObj.playerId});
     const self = this;
-    axios.post('http://localhost:8081//statistics/player/', playerObj)
+    axios.post('http://localhost:8081/api/statistics/player/', playerObj)
     .then(function (response) {
       self.storePlayerStatsToState(response.data);
     })
